@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="container">
-    <form th:action="@{/login}" method="post">
+<div class="login-container">
+    <form th:action="@{/login}" method="post" class="login-form">
         <h2>Iniciar sesión</h2>
 
         <label>Usuario:</label>
@@ -16,6 +16,13 @@
         <input type="password" name="password" required>
 
         <button type="submit">Ingresar</button>
+
+        <div class="login-alert" th:if="${param.error}">
+            Credenciales incorrectas. Intenta de nuevo.
+        </div>
+        <div class="login-alert success" th:if="${param.logout}">
+            Sesión cerrada correctamente.
+        </div>
     </form>
 </div>
 </body>

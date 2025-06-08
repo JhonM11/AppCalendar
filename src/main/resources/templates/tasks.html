@@ -3,8 +3,24 @@
 <head>
     <title>Configurar Tareas</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script>
+        if (window.history && window.history.pushState) {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            };
+        }
+    </script>
 </head>
 <body>
+
+<header class="main-header">
+    <div class="title">App Calendar</div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Cerrar Sesión</button>
+    </form>
+</header>
+
 <div class="container">
     <h2>Programar Nueva Tarea</h2>
 
