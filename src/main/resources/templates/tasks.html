@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Configurar Tareas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>Programar Nueva Tarea</h2>
+
+    <form th:action="@{/tasks}" method="post">
+        <label>Fecha y Hora de Ejecución:</label>
+        <input type="datetime-local" name="executionTime" required>
+
+        <label>Ruta Absoluta del Script:</label>
+        <input type="text" name="absolutePath" required>
+
+        <button type="submit">Programar Tarea</button>
+    </form>
+
+    <h3>Tareas programadas:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ejecución</th>
+            <th>Ruta del Script</th>
+            <th>Estado</th>
+            <th>Creado Por</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.executionTime}"></td>
+            <td th:text="${task.absolutePath}"></td>
+            <td th:text="${task.status}"></td>
+            <td th:text="${task.createdBy}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
