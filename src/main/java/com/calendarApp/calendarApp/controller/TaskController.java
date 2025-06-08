@@ -17,11 +17,11 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @PostMapping
-    public ResponseEntity<Task> createTask(@ModelAttribute TaskRequest request, Principal principal) {
-        Task task = taskService.createTask(request, principal.getName());
-        return ResponseEntity.ok(task);
-    }
+//    @PostMapping
+//    public ResponseEntity<Task> createTask(@ModelAttribute TaskRequest request, Principal principal) {
+//        Task task = taskService.createTask(request, principal.getName());
+//        return ResponseEntity.ok(task);
+//    }
 
     @GetMapping
     public ResponseEntity<List<Task>> getTasks() {
