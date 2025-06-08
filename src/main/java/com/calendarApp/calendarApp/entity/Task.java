@@ -19,6 +19,6 @@ public class Task {
     private Status status;
 
     public enum Status {
-        PENDIENTE, EJECUTADA
+        PENDIENTE, FALLIDA, EJECUTADA
     }
 }

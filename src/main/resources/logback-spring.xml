@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <!-- Definimos una propiedad para la ruta del log -->
+    <property name="LOG_PATH" value="logs" />
+    <property name="LOG_FILE" value="${LOG_PATH}/app.log" />
+
+    <!-- Consola -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss}] [%-5level] [%logger{36}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Archivo con rotación diaria -->
+    <appender name="FileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Archivo por día -->
+            <fileNamePattern>${LOG_PATH}/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory> <!-- guarda logs por 7 días -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%-5level] [%logger{36}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Niveles de log -->
+    <root level="info">
+        <appender-ref ref="Console" />
+        <appender-ref ref="FileAppender" />
+    </root>
+
+</configuration>
